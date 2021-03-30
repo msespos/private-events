@@ -1,2 +1,6 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>New User</h1>
+<%= form_for @user do |f| %>
+  <%= f.label :name, 'Your name here:   ' %>
+  <%= f.text_field :name, placeholder: "name", value: "Mike" %><br><br>
+  <%= f.submit "Submit" %>
+<% end %>
