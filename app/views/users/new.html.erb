@@ -1,5 +1,6 @@
 <h1>New User</h1>
-<%= form_for @user do |f| %>
+
+<%= form_with url: new_users_path, method: :get do |f| %>
   <%= f.label :name, 'Your name here:   ' %>
   <%= f.text_field :name, placeholder: "name", value: "Mike" %><br><br>
   <%= f.submit "Submit" %>
