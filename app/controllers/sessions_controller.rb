@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    session[:name] = @user.name
-    redirect_to new_sessions_path
+    user = User.find_by_name(params[:name])
+    session[:current_user_name] = user.name
   end
 end
