@@ -1,13 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  description: MyText
+rave:
+  description: Come on down to the big all-night rave and party like it's the 90s!
   date: 2021-04-01
-  time: 2021-04-01 12:52:45
-  location: MyString
+  time: 2021-04-01 23:23:23
+  location: TBA
+  creator: mike
 
-two:
-  description: MyText
+dinner_party:
+  description: Enjoy a sedate and stately dining experience.
   date: 2021-04-01
-  time: 2021-04-01 12:52:45
-  location: MyString
+  time: 2021-04-01 19:00:00
+  location: Mike's Apartment
+  creator: mike
+
+movie_night:
+  description: We'll have quips and snark galore at the latest edition of this event.
+  date: 2021-04-02
+  time: 2021-04-02 20:00:00
+  location: Cyberspace
+  creator: anshul
