@@ -1,2 +1,6 @@
 <h1>Users Show Page</h1>
-The current user is <%= session[:current_user_name] %>.
+The current user is <%= session[:current_user_name] %>.<br>
+Here are all of <%= @user.name %>'s created events:<br>
+<% @user.created_events.each do |event| %>
+  <%= event.description %><br>
+<% end %>
