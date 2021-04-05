@@ -1,2 +1,9 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<h1>New Event</h1>
+The current user is <%= session[:current_user_name] %>.
+
+<%= form_for @event do |f| %>
+  <%= f.label :description, 'Description:   ' %>
+  <%= f.text_field :description, placeholder: "description" %><br><br>
+  <%= f.hidden_field :creator_id, :value => session[:current_user_id] %>
+  <%= f.submit "Submit" %>
+<% end %>
