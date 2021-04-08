@@ -1,4 +1,3 @@
 <h1>Event</h1>
 The current user is <%= session[:current_user_name] %>.<br>
-Here is an event:
-<%= @event.description %>
+The creator of the current event is <%= User.find(@event.creator_id).name %>.
