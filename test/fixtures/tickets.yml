@@ -7,3 +7,19 @@ one:
 two:
   user: rachel
   event: rave
+
+three:
+  user: mike
+  event: game_night
+
+four:
+  user: rachel
+  event: game_night
+
+five:
+  user: matt
+  event: game_night
+
+six:
+  user: anshul
+  event: game_night

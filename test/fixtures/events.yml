@@ -20,3 +20,10 @@ movie_night:
   time: 2021-04-02 20:00:00
   location: Cyberspace
   creator: anshul
+
+game_night:
+  description: Anything but Monopoly.
+  date: 2021-04-09
+  time: 2021-04-09 21:00:00
+  location: Peoria
+  creator: rachel
