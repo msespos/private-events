@@ -4,3 +4,7 @@ Here are all of <%= @user.name %>'s created events:<br>
 <% @user.created_events.each do |event| %>
   <%= event.description %><br>
 <% end %>
+<%= @user.name %> is going to the following events:<br>
+<% @user.attended_events.each do |event| %>
+  <%= event.description %><br>
+<% end %>
