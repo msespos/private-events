@@ -1,3 +1,7 @@
 <h1>Event</h1>
 The current user is <%= session[:current_user_name] %>.<br>
 The creator of the current event is <%= @event.creator.name %>.
+The attendees of the current event are:<br>
+<% @event.attendees.each do |attendee| %>
+  <%= attendee.name %><br>
+<% end %>
