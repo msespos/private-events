@@ -23,3 +23,39 @@ five:
 six:
   user: anshul
   event: game_night
+
+seven:
+  user: mike
+  event: future_party
+
+eight:
+  user: rachel
+  event: future_party
+
+nine:
+  user: matt
+  event: future_party
+
+ten:
+  user: anshul
+  event: future_party
+
+eleven:
+  user: mike
+  event: dinner_party
+
+twelve:
+  user: anshul
+  event: dinner_party
+
+thirteen:
+  user: mike
+  event: movie_night
+
+fourteen:
+  user: matt
+  event: movie_night
+
+fifteen:
+  user: anshul
+  event: movie_night
