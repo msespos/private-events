@@ -1,5 +1,10 @@
 <h1>All Events</h1>
 The current user is <%= session[:current_user_name] %>.<br>
-<% @events.each do |event| %>
+Past events:<br>
+<% @events.where('date < ?', DateTime.now).each do |event| %>
+  <%= event.description %><br>
+<% end %>
+Upcoming events:<br>
+<% @events.where('date > ?', DateTime.now).each do |event| %>
   <%= event.description %><br>
 <% end %>
