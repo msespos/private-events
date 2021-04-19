@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   resources :events, only: [:index, :show, :new, :create]
   resource :sessions, only: [:new, :create]
+  get 'welcome', to: 'sessions#welcome', as: :welcome
 
 end
