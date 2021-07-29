@@ -1,24 +1,5 @@
-# README
+PRIVATE EVENTS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an application developed as part of my work with the Odin Project.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Private Events is an event management site. Users can create and attend events, by signing up and creating or accepting invitations.
