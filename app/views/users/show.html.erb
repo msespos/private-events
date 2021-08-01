@@ -1,1 +1,5 @@
-<%= @user.email %>
+<%= @user.email %><br>
+<% @user.created_events.each do |e| %>
+  <%= e.name %><br>
+  <%= e.description %><br>
+<% end %>
