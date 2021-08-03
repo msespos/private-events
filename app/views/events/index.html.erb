@@ -1,1 +1,21 @@
-<h2>The Events</h2>
+<% if flash.key? :success %>
+  <h2><%= flash[:success] %></h2>
+<% end %><br>
+
+<h2>The Events</h2><br>
+
+<% @events.each do |e| %>
+  Creator:
+  <%= e.creator.name %><br>
+  Name:
+  <%= e.name %><br>
+  Description:
+  <%= e.description %><br>
+  Date:
+  <%= e.date %><br>
+  Time:
+  <%= e.time %><br>
+  Location:
+  <%= e.location %><br>
+  <br><br>
+<% end %>
