@@ -1,5 +1,12 @@
 <%= @user.email %><br>
+Created Events:<br>
 <% @user.created_events.each do |e| %>
-  <%= e.name %><br>
+  <%= e.name %> -
   <%= e.description %><br>
 <% end %>
+Attended Events:<br>
+<% @user.tickets.each do |t| %>
+  <%= Event.find(t.attended_event_id).name %> -
+  <%= Event.find(t.attended_event_id).description %><br>
+<% end %>
+
