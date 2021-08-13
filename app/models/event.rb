@@ -3,11 +3,6 @@ class Event < ApplicationRecord
   has_many :attendees, through: :tickets
   belongs_to :creator, class_name: "User"
 
-  def self.past
-    order("date desc").where("date <= ?", Date.today)
-  end
-
-  def self.future
-    order("date asc").where("date > ?", Date.today)
-  end
+  scope :past, -> { order("date desc").where("date <= ?", Date.today) }
+  scope :future, -> { order("date asc").where("date > ?", Date.today) }
 end
