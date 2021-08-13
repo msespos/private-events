@@ -4,9 +4,24 @@ Created Events:<br>
   <%= e.name %> -
   <%= e.description %><br>
 <% end %>
-Attended Events:<br>
-<% @user.tickets.each do |t| %>
-  <%= Event.find(t.attended_event_id).name %> -
-  <%= Event.find(t.attended_event_id).description %><br>
+
+Attended Events (Past):<br>
+<% @user.attended_events.order(date: :desc).where("date < ?", Date.today).each do |e| %>
+  <%= e.date %> -
+  <%= e.name %> -
+  <%= e.description %><br>
 <% end %>
 
+Attended Events (Today):<br>
+<% @user.attended_events.order(date: :asc).where("date = ?", Date.today).each do |e| %>
+  <%= e.date %> -
+  <%= e.name %> -
+  <%= e.description %><br>
+<% end %>
+
+Attended Events (Future):<br>
+<% @user.attended_events.order(date: :asc).where("date > ?", Date.today).each do |e| %>
+  <%= e.date %> -
+  <%= e.name %> -
+  <%= e.description %><br>
+<% end %>
