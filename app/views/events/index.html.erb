@@ -21,9 +21,30 @@
   <h2><%= flash[:success] %></h2>
 <% end %><br>
 
-<h2>The Events</h2><br>
+<h2>Upcoming Events</h2><br>
 
-<% @events.each do |e| %>
+<% @future_events.each do |e| %>
+  Creator:
+  <%= e.creator.name %><br>
+  Name:
+  <%= e.name %><br>
+  Description:
+  <%= e.description %><br>
+  Date:
+  <%= e.date %><br>
+  Time:
+  <%= e.time %><br>
+  Location:
+  <%= e.location %><br>
+  <%= form_with url: tickets_path, local: true do |f| %>
+    <%= f.hidden_field 'ticket[attended_event_id]', value: e.id %>
+    <%= f.submit "Attend it!" %>
+  <% end %><br>
+<% end %>
+
+<h2>Past Events</h2><br>
+
+<% @past_events.each do |e| %>
   Creator:
   <%= e.creator.name %><br>
   Name:
