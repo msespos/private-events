@@ -2,6 +2,9 @@
   <h2><%= flash[:error] %></h2>
 <% end %><br>
 
+<%= link_to "home", root_path %><br>
+
+
 <h1>Create a new event!</h1>
 
 <%= form_with model: @event do |f| %>

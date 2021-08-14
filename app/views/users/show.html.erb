@@ -1,23 +1,27 @@
-<%= @user.email %><br>
+<%= link_to "home", root_path %><br><br>
+
+<%= @user.name %><br>
+<%= @user.email %><br><br>
+
 Created Events:<br>
 <% @user.created_events.each do |e| %>
   <%= e.name %> -
   <%= e.description %><br>
-<% end %>
+<% end %><br>
 
 Attended Events (Past):<br>
 <% @user.attended_events.order(date: :desc).where("date < ?", Date.today).each do |e| %>
   <%= e.date %> -
   <%= e.name %> -
   <%= e.description %><br>
-<% end %>
+<% end %><br>
 
 Attended Events (Today):<br>
 <% @user.attended_events.order(date: :asc).where("date = ?", Date.today).each do |e| %>
   <%= e.date %> -
   <%= e.name %> -
   <%= e.description %><br>
-<% end %>
+<% end %><br>
 
 Attended Events (Future):<br>
 <% @user.attended_events.order(date: :asc).where("date > ?", Date.today).each do |e| %>
