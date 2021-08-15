@@ -27,10 +27,14 @@
   <h2><%= flash[:success] %></h2>
 <% end %><br>
 
+<h2>Today's Events</h2><br>
+
+<%= render partial: 'events_display', locals: {events: @today_events} %>
+
 <h2>Upcoming Events</h2><br>
 
-<%= render partial: 'event', locals: {events: @future_events} %>
+<%= render partial: 'events_display', locals: {events: @future_events} %>
 
 <h2>Past Events</h2><br>
 
-<%= render partial: 'event', locals: {events: @past_events} %>
+<%= render partial: 'events_display', locals: {events: @past_events} %>
