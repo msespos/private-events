@@ -12,10 +12,13 @@
   Location:
   <%= e.location %><br>
   <%= link_to "show event", e %><br>
-  <% if current_user && events == @future_events %>
+  <% if current_user && events == @future_events &&
+                     !current_user.attended_events.exists?(e.id) %>
     <%= form_with url: tickets_path, local: true do |f| %>
       <%= f.hidden_field 'ticket[attended_event_id]', value: e.id %>
       <%= f.submit "Attend it!" %>
     <% end %>
+  <% elsif current_user.attended_events.exists?(e.id) %>
+    <p>Attending</p>
   <% end %><br>
 <% end %>
