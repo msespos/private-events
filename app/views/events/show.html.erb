@@ -15,4 +15,7 @@ Location:
 Attendees:<br>
 <% @event.tickets.each do |t| %>
   <%= User.find(t.attendee_id).name %><br>
-<% end %>
+<% end %><br>
+
+<%= link_to "Update this event", edit_event_path %><br>
+<%= link_to "Delete this event", event_path, method: :delete %>
