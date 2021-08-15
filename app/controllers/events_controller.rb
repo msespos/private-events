@@ -5,8 +5,15 @@ class EventsController < ApplicationController
     @future_events = Event.future
   end
 
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def new
     @event = Event.new
+  end
+
+  def edit
   end
 
   def create
@@ -20,8 +27,10 @@ class EventsController < ApplicationController
     end
   end
 
-  def show
-    @event = Event.find(params[:id])
+  def update
+  end
+
+  def destroy
   end
 
   private

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   get 'events/index'
   root to: "events#index"
   resources :users, only: [:show]
-  resources :events, only: [:index, :new, :create, :show]
+  resources :events
   resources :tickets, only: [:index, :new, :create]
 end
