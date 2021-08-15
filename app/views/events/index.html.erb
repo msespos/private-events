@@ -1,8 +1,10 @@
 <% unless current_user %>
   <div class="index-header-not-logged-in">
     <h1>PLEASE LOG IN!</h1>
-    <%= button_to "sign up", new_user_registration_path, method: :get, class:"button" %>
-    <%= button_to "login", new_user_session_path, method: :get, class:"button" %>
+    <%= button_to "sign up", new_user_registration_path, 
+                             method: :get, class:"button" %>
+    <%= button_to "login", new_user_session_path, 
+                           method: :get, class:"button" %>
   </div>
 <% end %>
 
@@ -15,7 +17,8 @@
     <div class="index-header-logged-in">
       <%= link_to "#{current_user.name}'s events", current_user %><br>
       <%= link_to "create a new event", new_event_path %>
-      <%= button_to "logout", destroy_user_session_path, method: :delete, class:"button" %>
+      <%= button_to "logout", destroy_user_session_path, 
+                              method: :delete, class:"button" %>
     </div>
   </div>
 <% end %>
@@ -26,43 +29,8 @@
 
 <h2>Upcoming Events</h2><br>
 
-<% @future_events.each do |e| %>
-  Creator:
-  <%= e.creator.name %><br>
-  Name:
-  <%= e.name %><br>
-  Description:
-  <%= e.description %><br>
-  Date:
-  <%= e.date %><br>
-  Time:
-  <%= e.time %><br>
-  Location:
-  <%= e.location %><br>
-  <%= link_to "show event", e %><br>
-  <%= form_with url: tickets_path, local: true do |f| %>
-    <%= f.hidden_field 'ticket[attended_event_id]', value: e.id %>
-    <%= f.submit "Attend it!" %>
-  <% end %><br>
-<% end %>
+<%= render partial: 'event', locals: {events: @future_events} %>
 
 <h2>Past Events</h2><br>
 
-<% @past_events.each do |e| %>
-  Creator:
-  <%= e.creator.name %><br>
-  Name:
-  <%= e.name %><br>
-  Description:
-  <%= e.description %><br>
-  Date:
-  <%= e.date %><br>
-  Time:
-  <%= e.time %><br>
-  Location:
-  <%= e.location %><br>
-  <%= form_with url: tickets_path, local: true do |f| %>
-    <%= f.hidden_field 'ticket[attended_event_id]', value: e.id %>
-    <%= f.submit "Attend it!" %>
-  <% end %><br>
-<% end %>
+<%= render partial: 'event', locals: {events: @past_events} %>
