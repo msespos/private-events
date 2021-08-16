@@ -20,5 +20,9 @@
     <% end %>
   <% elsif current_user.attended_events.exists?(e.id) %>
     <p>Attending</p>
+    <%= button_to "Unattend", ticket_path(current_user.tickets.
+                  find_by!(attended_event_id: e.id)),
+                  method: :delete, data: { confirm:
+                  'Are you sure you want to cancel your reservation?' } %>
   <% end %><br>
 <% end %>
