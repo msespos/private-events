@@ -19,6 +19,17 @@ class TicketsController < ApplicationController
     end
   end
 
+  def destroy
+    @ticket = Ticket.find(params[:id])
+    if @ticket.destroy
+      flash[:success] = "Reservation canceled!"
+      redirect_to events_path
+    else
+      flash.now[:error] = "Error in canceling reservation - try again"
+      render :new
+    end
+  end
+
   private
 
     def ticket_params
