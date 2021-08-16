@@ -9,13 +9,6 @@ Created Events:<br>
   <%= e.description %><br>
 <% end %><br>
 
-Attended Events (Past):<br>
-<% @user.attended_events.order(date: :desc).where("date < ?", Date.today).each do |e| %>
-  <%= e.date %> -
-  <%= e.name %> -
-  <%= e.description %><br>
-<% end %><br>
-
 Attended Events (Today):<br>
 <% @user.attended_events.order(date: :asc).where("date = ?", Date.today).each do |e| %>
   <%= e.date %> -
@@ -25,6 +18,13 @@ Attended Events (Today):<br>
 
 Attended Events (Future):<br>
 <% @user.attended_events.order(date: :asc).where("date > ?", Date.today).each do |e| %>
+  <%= e.date %> -
+  <%= e.name %> -
+  <%= e.description %><br>
+<% end %><br>
+
+Attended Events (Past):<br>
+<% @user.attended_events.order(date: :desc).where("date < ?", Date.today).each do |e| %>
   <%= e.date %> -
   <%= e.name %> -
   <%= e.description %><br>
