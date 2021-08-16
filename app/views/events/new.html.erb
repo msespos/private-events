@@ -1,23 +1,2 @@
-<% if flash.key? :error %>
-  <h2><%= flash[:error] %></h2>
-<% end %><br>
-
-<%= link_to "home", root_path %><br>
-
-<h1>Create a new event!</h1>
-
-<%= form_with model: @event do |f| %>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br><br>
-  <%= f.label :description %><br>
-  <%= f.text_area :description %><br><br>
-  <%= f.label :date %><br>
-  <%= f.date_field :date %><br><br>
-  <%= f.label :time %><br>
-  <%= f.time_field :time %><br><br>
-  <%= f.label :location %><br>
-  <%= f.text_field :location %><br><br>
-  <%= f.submit "Create it!" %><br><br>
-<% end %><br>
-
-<%= current_user.email if current_user %>
+<%= render partial: 'event_form', locals: {title: 'Create a new event!',
+                                               btn: 'Create it!'} %>
