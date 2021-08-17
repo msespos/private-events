@@ -5,11 +5,13 @@
 
 Created Events:<br>
 <% @user.created_events.each do |e| %>
+  <%= e.date %> -
+  <%= e.time.in_time_zone('Mountain Time (US & Canada)').to_s(:time) %> -
   <%= e.name %> -
   <%= e.description %>
   <%= form_with url: tickets_path, local: true do |f| %>
     Invite a friend!
-    <%= f.select :user_name, User.pluck(:name) %>
+    <%= f.select :username, User.pluck(:name) %>
     <%= f.hidden_field 'ticket[attended_event_id]', value: e.id %>
     <%= f.submit "Invite them!" %>
   <% end %><br>
