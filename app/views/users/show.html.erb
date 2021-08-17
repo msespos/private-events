@@ -20,6 +20,7 @@ Created Events:<br>
 Attended Events (Today):<br>
 <% @user.attended_events.order(date: :asc).where("date = ?", Date.today).each do |e| %>
   <%= e.date %> -
+  <%= e.time.in_time_zone('Mountain Time (US & Canada)').to_s(:time) %> -
   <%= e.name %> -
   <%= e.description %><br>
 <% end %><br>
@@ -27,6 +28,7 @@ Attended Events (Today):<br>
 Attended Events (Future):<br>
 <% @user.attended_events.order(date: :asc).where("date > ?", Date.today).each do |e| %>
   <%= e.date %> -
+  <%= e.time.in_time_zone('Mountain Time (US & Canada)').to_s(:time) %> -
   <%= e.name %> -
   <%= e.description %><br>
 <% end %><br>
@@ -34,6 +36,7 @@ Attended Events (Future):<br>
 Attended Events (Past):<br>
 <% @user.attended_events.order(date: :desc).where("date < ?", Date.today).each do |e| %>
   <%= e.date %> -
+  <%= e.time.in_time_zone('Mountain Time (US & Canada)').to_s(:time) %> -
   <%= e.name %> -
   <%= e.description %><br>
 <% end %>
