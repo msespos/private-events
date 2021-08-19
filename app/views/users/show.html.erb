@@ -6,7 +6,7 @@
 Created Events:<br>
 <% @user.created_events.each do |e| %>
   <%= e.date %> -
-  <%= e.time.in_time_zone('Mountain Time (US & Canada)').to_s(:time) %> -
+  <%= e.time.to_s(:time) %> -
   <%= e.name %> -
   <%= e.description %>
   <%= form_with url: tickets_path, local: true do |f| %>

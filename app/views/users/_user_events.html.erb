@@ -2,7 +2,7 @@ Attended Events (<%= event_time %>):<br>
 <% @user.attended_events.order(date: event_date_direction)
         .where(event_date_query, Date.today).each do |e| %>
   <%= e.date %> -
-  <%= e.time.in_time_zone('Mountain Time (US & Canada)').to_s(:time) %> -
+  <%= e.time.to_s(:time) %> -
   <%= e.name %> -
   <%= e.description %><br>
 <% end %><br>
