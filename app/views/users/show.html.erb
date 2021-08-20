@@ -13,6 +13,7 @@ Created Events:<br>
     Invite a friend!
     <%= f.select :username, User.pluck(:name) %>
     <%= f.hidden_field 'ticket[attended_event_id]', value: e.id %>
+    <%= f.hidden_field 'ticket[attending]', value: 0 %>
     <%= f.submit "Invite them!" %>
   <% end %><br>
 <% end %><br>
