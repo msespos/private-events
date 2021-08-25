@@ -9,14 +9,13 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = current_user.tickets.build(ticket_params)
+    @ticket = Ticket.new(ticket_params)
     if @ticket.save
       flash[:success] = "New ticket created!"
-      redirect_to events_path
     else
-      flash.now[:error] = "Error in creating ticket"
-      render :new
+      flash[:error] = "Error in creating ticket: #{@ticket.errors.full_messages} "
     end
+    redirect_to events_path
   end
 
   def destroy
@@ -33,6 +32,6 @@ class TicketsController < ApplicationController
   private
 
     def ticket_params
-      params.require(:ticket).permit(:attended_event_id)
+      params.require(:ticket).permit(:attended_event_id, :attendee_id)
     end
 end
