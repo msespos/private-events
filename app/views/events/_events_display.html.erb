@@ -16,14 +16,17 @@
   <%= link_to "show event", e %><br>
 
   <% if current_user %>
-    <% user_tickets = current_user.tickets.where('attended_event_id = ?', e.id) %>
-    <% if events != @past_events && user_tickets.exists? &&
-                                 user_tickets.first.attending == 0 %>
+    <% user_ticket = current_user.ticket_for e %>
+    <%= user_ticket.inspect %>
+    <% if time_category != :past && user_ticket && !user_ticket.attending? %>
       <h2><%= "You're invited!" %></h2>
-      <%#= Button to "Attend it!" - sets attending to true %>
+      <%= form_with model: Ticket.new, local: true do |f| %>
+        <%= f.hidden_field 'attending', value: true %>
+        <%= f.submit 'Attend it!' %>
+      <% end %><br>
     <%# elsif user is attending %>
-      <%# <p>Attending</p>%>
-      <%#= button_to "Unattend" - sets attendding to false
+      <%# <p>Attending</p> %>
+      <%#= button_to "Unattend" - sets attending to false %>
     <% end %><br>
   <% end %>
 <% end %>
