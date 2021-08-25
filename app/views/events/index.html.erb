@@ -25,13 +25,18 @@
 
 <% if flash.key? :success %>
   <h2><%= flash[:success] %></h2>
+<% elsif flash.key? :error %>
+  <h2><%= flash[:error] %></h2>
 <% end %><br>
 
 <%= render partial: 'events_display', locals: { events: @today_events,
-                                                title: "Today's Events" } %>
+                                                title: "Today's Events",
+                                                time_category: :today } %>
 
 <%= render partial: 'events_display', locals: { events: @future_events,
-                                                title: "Upcoming Events" } %>
+                                                title: "Upcoming Events",
+                                                time_category: :future } %>
 
 <%= render partial: 'events_display', locals: { events: @past_events,
-                                                title: "Past Events" } %>
+                                                title: "Past Events",
+                                                time_category: :past } %>
