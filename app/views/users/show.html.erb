@@ -9,12 +9,11 @@ Created Events:<br>
   <%= e.time.to_s(:time) %> -
   <%= e.name %> -
   <%= e.description %>
-  <%= form_with url: tickets_path, local: true do |f| %>
+  <%= form_with model: Ticket.new, local: true do |f| %>
     Invite a friend!
-    <%= f.select :username, User.pluck(:name) %>
-    <%= f.hidden_field 'ticket[attended_event_id]', value: e.id %>
-    <%= f.hidden_field 'ticket[attending]', value: 0 %>
-    <%= f.submit "Invite them!" %>
+    <%= f.select('attendee_id', User.all.collect {|u| [ u.name, u.id ] }) %>
+    <%= f.hidden_field 'attended_event_id', value: e.id %>
+    <%= f.submit 'Invite them!' %>
   <% end %><br>
 <% end %><br>
 
