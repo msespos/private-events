@@ -1,6 +1,7 @@
 Attended Events (<%= event_time %>):<br>
 <% @user.attended_events.order(date: event_date_direction)
-        .where(event_date_query, Date.today).each do |e| %>
+        .where(event_date_query, Date.today)
+        .where('attending = ?', true).each do |e| %>
   <%= e.date %> -
   <%= e.time.to_s(:time) %> -
   <%= e.name %> -
