@@ -12,7 +12,10 @@ Created Events:<br>
   <%= e.description %>
   <%= form_with model: Ticket.new, local: true do |f| %>
     Invite a friend!
-    <%= f.select('attendee_id', User.all.collect {|u| [ u.name, u.id ] }) %>
+    <% users_without_tickets = User.includes(:tickets)
+                                   .where( tickets: { id: nil } ) %>
+    <%= f.select('attendee_id', users_without_tickets
+         .collect { |u| [ u.name, u.id ] }) %>
     <%= f.hidden_field 'attended_event_id', value: e.id %>
     <%= f.submit 'Invite them!' %>
   <% end %><br>
