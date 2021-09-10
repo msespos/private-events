@@ -1,5 +1,6 @@
 <br><h2>Attended Events (<%= event_time %>):</h2>
-<% if @user.attended_events.empty? %>
+<% if @user.attended_events.where(event_date_query, Date.today)
+                           .where('attending = ?', true).empty? %>
   <h2><em>No events</em></h2>
 <% else %>
   <div class="event-boxes-container">
