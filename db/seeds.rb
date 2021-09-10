@@ -23,7 +23,7 @@ end
 
 25.times do
   name = Faker::Music::RockBand.name
-  description = Faker::TvShows::TheITCrowd.quote
+  description = Faker::Movies::BackToTheFuture.quote
   date = Faker::Date.forward(days: 23)
   time = Faker::Time.forward(days: 5,  period: :evening, format: :long)
   location = Faker::Movies::StarWars.planet

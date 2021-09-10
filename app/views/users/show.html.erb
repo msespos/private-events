@@ -1,25 +1,52 @@
-<%= link_to "home", root_path %><br>
-<%= link_to "create a new event", new_event_path %><br><br>
-
-<%= @user.name %><br>
-<%= @user.email %><br><br>
-
-Created Events:<br>
-<% @user.created_events.each do |e| %>
-  <%= e.date %> -
-  <%= e.time.to_s(:time) %> -
-  <%= e.name %> -
-  <%= e.description %>
-  <%= form_with model: Ticket.new, local: true do |f| %>
-    Invite a friend!
-    <% users_without_tickets_for_event = User.where
-            .not(id: e.tickets.map(&:attendee_id)) %>
-    <%= f.select('attendee_id', users_without_tickets_for_event
-         .collect { |u| [ u.name, u.id ] }) %>
-    <%= f.hidden_field 'attended_event_id', value: e.id %>
-    <%= f.submit 'Invite them!' %>
-  <% end %><br>
+<% if flash.key? :success %>
+  <h2><em><%= flash[:success] %></em></h2>
+<% elsif flash.key? :error %>
+  <h2><em><%= flash[:error] %></em></h2>
 <% end %><br>
+
+<div class="index-header-logged-in">
+  <div class="logo">Private Events!</div>
+  <div class="index-header-logged-in-right">
+      <%= button_to "create a new event", new_event_path, method: :get,
+                                          class:"button" %>
+      <%= button_to "home", root_path, method: :get, class:"button" %>
+  </div>
+</div>
+<div class="username-and-email">
+  <%= current_user.name %><br>
+  <%= current_user.email %>
+</div>
+<h1><%= current_user.name %>'s Events</h1><br>
+<h2>Created Events</h2>
+<% if @user.created_events.empty? %>
+  <h2><em>No events</em></h2>
+<% else %>
+  <div class="event-boxes-container">
+    <div class="event-show-box">
+      <% @user.created_events.each do |e| %>
+        <div class="event-in-created-event-box">
+          <%= e.date %> --
+          <%= e.time.to_s(:time) %> --
+          <em><%= e.name %></em> --
+          <%= e.description %><br><br>
+          <%= form_with model: Ticket.new, local: true do |f| %>
+            <div class = "invite-line-in-created-event-box">
+              <div><em>Invite a friend!</em></div>
+              <div>
+                <% users_without_tickets_for_event = User.where
+                         .not(id: e.tickets.map(&:attendee_id)) %>
+                <%= f.select('attendee_id', users_without_tickets_for_event
+                     .collect { |u| [ u.name, u.id ] }) %>
+                <%= f.hidden_field 'attended_event_id', value: e.id %>
+              </div>
+              <div><%= f.submit 'Invite them!' %></div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <%= render partial: 'user_events', locals: { event_time: 'Today',
                                              event_date_direction: :asc,

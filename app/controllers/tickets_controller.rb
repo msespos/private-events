@@ -15,7 +15,7 @@ class TicketsController < ApplicationController
     else
       flash[:error] = "Error in creating ticket: #{@ticket.errors.full_messages} "
     end
-    redirect_to events_path
+    redirect_to user_path(current_user.id)
   end
 
   def update

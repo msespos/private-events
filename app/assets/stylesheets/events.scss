@@ -1,3 +1,194 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.index-header-logged-in {
+  display: flex;
+}
+
+.index-header-logged-in-right {
+  padding: 10px 0px 0px 0px;
+  margin: 0px 75px 0px 75px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  padding: 20px 0px 0px 0px;
+  margin: 0px 75px 0px 75px;
+  font-weight: bold;
+  font-size: 42px;
+  font-style: italic;
+  color: rgb(18, 77, 18);
+  margin-right: auto;
+}
+
+.logo-only {
+  padding: 20px 0px 0px 0px;
+  font-weight: bold;
+  margin: 0px 75px 0px 75px;
+  font-size: 42px;
+  font-style: italic;
+  color: rgb(18, 77, 18);
+  text-align: left;
+}
+
+.index-header-not-logged-in {
+  padding: 10px 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 75px 0px 75px;
+}
+
+.just-home-button-header {
+  padding: 10px 0px 0px 0px;
+  margin: 0px 75px 0px 75px;
+  display: flex;
+}
+
+.username-and-email {
+  margin: 25px 75px 0px 75px;
+  font-size: 32px;
+  font-weight: bold;
+  float: left;
+}
+
+h1 {
+  font-size: 67px;
+  margin: 90px 0px 20px;
+}
+
+.header-buttons {
+  display: flex;
+}
+
+.button {
+  background-color: #362f55;
+  border-radius: 100px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type=submit] {
+  background-color: #362f55;
+  border-radius: 100px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+select {
+  font: inherit;
+}
+
+body {
+  background-color: #DFDBE5;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm20 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM10 37a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm10-17h20v20H20V20zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14z' fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");color: #44344F;
+  text-align: center;
+  font-family: Helvetica, sans-serif;
+}
+
+.event-boxes-container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  color: #44344F;
+}
+
+.event-box {
+  background-color: #b2bce8;
+  width: 50%;
+  border: 15px solid #564D80;
+  border-radius: 100px;
+  box-shadow: 5px 5px #3f6f41;
+  padding: 30px;
+  margin: 20px;
+}
+
+.event-show-box {
+  background-color: #b2bce8;
+  width: 75%;
+  border: 15px solid #564D80;
+  border-radius: 100px;
+  box-shadow: 5px 5px #3f6f41;
+  padding: 30px;
+  margin: 20px;
+}
+
+.creator-and-name-in-event-box {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.invited-or-attending {
+  font-weight: bold;
+  font-size: 32px;
+  font-style: italic;
+  color: rgb(18, 77, 18);
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text-area {
+  width: 33%;
+  height: 95px;
+  font-size: 20px;
+  margin: 10px 0px 30px;
+}
+
+.label {
+  font-size: 25px;
+}
+
+.form-field {
+  width: 20%;
+  height: 28px;
+  font-size: 20px;
+  margin: 10px 0px 30px;
+}
+
+.form-date-time-field {
+  width: 8.5%;
+  height: 28px;
+  font-size: 20px;
+  margin: 10px 0px 30px;
+}
+
+.event-in-created-event-box {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 50px 0px 75px
+}
+
+.invite-line-in-created-event-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0px 333px 0px 333px;
+}
+
+.text-in-user-attended-event-box {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 20px 0px 0px;
+}
+
+.date-time-and-location-in-event-box {
+  font-size: 18px;
+}
+
+.attendees-in-event-box {
+  font-weight: bold;
+  font-size: 20px;
+}

@@ -1,24 +1,50 @@
-<%= link_to "home", root_path %><br><br>
+<div class="index-header-logged-in">
+  <div class="logo">Private Events!</div>
+  <div class="index-header-logged-in-right">
+      <%= button_to "home", root_path, method: :get, class:"button" %>
+  </div>
+</div>
 
-Creator:
-<%= @event.creator.name %><br>
-Name:
-<%= @event.name %><br>
-Description:
-<%= @event.description %><br>
-Date:
-<%= @event.date %><br>
-Time:
-<%= @event.time %><br>
-Location:
-<%= @event.location %><br>
-Attendees:<br>
-<% @event.tickets.each do |t| %>
-  <%= User.find(t.attendee_id).name %><br>
-<% end %><br>
+<h1><%= @event.name %></h1><br>
+
+<div class="event-boxes-container">
+  <div class="event-box">
+    <div class="creator-and-name-in-event-box">
+      <br>Creator: <%= @event.creator.name %><br><br>
+    </div><br>
+    <div class="description-in-event-box">
+      Description: <%= @event.description %><br><br>
+    </div><br>
+    <div class="date-time-and-location-in-event-box">
+      Date: <%= @event.date %><br>
+      Time: <%= @event.time %><br>
+      Location: <%= @event.location %><br>
+    </div><br><br>
+    <div class="attendees-in-event-box">
+      <em>Attendees:</em><br>
+      <% if @event.tickets.where("attending = ?", true).empty? %>
+        <h4><em>No attendees</em></h4><br>
+      <% end %>
+      <% @event.tickets.each do |t| %>
+        <% if t.attending == true %>
+          <%= User.find(t.attendee_id).name %><br>
+        <% end %>
+      <% end %><br>
+      <em>Invited:</em><br>
+      <% if @event.tickets.where("attending = ?", false).empty? %>
+        <h4><em>No invitees</em></h4>
+      <% end %>
+      <% @event.tickets.each do |t| %>
+        <% if t.attending == false %>
+          <%= User.find(t.attendee_id).name %><br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <% if @event.creator == current_user %>
-  <%= link_to "Update this event", edit_event_path %><br>
-  <%= link_to "Delete this event", event_path, method: :delete,
-              data: { confirm: 'Are you sure you want to delete this event?' } %>
+  <%= button_to "Update this event", edit_event_path, method: :get, class:"button" %>
+  <%= button_to "Delete this event", event_path, method: :delete, class:"button",
+                data: { confirm: 'Are you sure you want to delete this event?' } %>
 <% end %>

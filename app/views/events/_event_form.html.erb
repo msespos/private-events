@@ -2,22 +2,29 @@
   <h2><%= flash[:error] %></h2>
 <% end %><br>
 
-<%= link_to "home", root_path %><br>
+<div class="index-header-logged-in">
+  <div class="logo">Private Events!</div>
+  <div class="index-header-logged-in-right">
+      <%= button_to "home", root_path, method: :get, class:"button" %>
+  </div>
+</div>
+<div class="username-and-email">
+  <%= current_user.name %><br>
+  <%= current_user.email %>
+</div>
 
-<%= title %>
+<h1><%= title %></h1>
 
-<%= form_with model: @event do |f| %>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br><br>
-  <%= f.label :description %><br>
-  <%= f.text_area :description %><br><br>
-  <%= f.label :date %><br>
-  <%= f.date_field :date %><br><br>
-  <%= f.label :time %><br>
-  <%= f.time_field :time %><br><br>
-  <%= f.label :location %><br>
-  <%= f.text_field :location %><br><br>
-  <%= f.submit btn %><br><br>
-<% end %><br>
-
-<%= current_user.email if current_user %>
+<%= form_with model: @event, local: true, class:"event-form" do |f| %>
+  <%= f.label :name, class:"label" %>
+  <%= f.text_field :name, class:"form-field" %>
+  <%= f.label :description, class:"label" %>
+  <%= f.text_area :description, class:"text-area" %>
+  <%= f.label :date, class:"label" %>
+  <%= f.date_field :date, class:"form-date-time-field" %>
+  <%= f.label :time, class:"label" %>
+  <%= f.time_field :time, class:"form-date-time-field" %>
+  <%= f.label :location, class:"label" %>
+  <%= f.text_field :location, class:"form-field" %>
+  <%= f.submit btn %>
+<% end %>
