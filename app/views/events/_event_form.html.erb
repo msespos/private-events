@@ -1,6 +1,8 @@
-<% if flash.key? :error %>
-  <h2><%= flash[:error] %></h2>
-<% end %><br>
+<div class="flash">
+  <% if flash.key? :error %>
+    <h2><%= flash[:error] %></h2>
+  <% end %>
+</div>
 
 <div class="index-header-logged-in">
   <div class="logo">Private Events!</div>

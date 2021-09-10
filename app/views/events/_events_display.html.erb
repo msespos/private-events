@@ -7,32 +7,32 @@
     <div class="event-box">
       <div class="creator-and-name-in-event-box">
         <%= e.name %><br>
-        Hosted by <%= e.creator.name %>
-      </div><br>
+        Hosted by <%= e.creator.name %><br><br>
+      </div>
       <div class="description-in-event-box">
-        <%= e.description %>
-      </div><br>
+        <%= e.description %><br><br>
+      </div>
       <div class="date-time-and-location-in-event-box">
         <%= e.date %><br>
         <%= e.time.to_s(:time) %><br>
-        <%= e.location %><br>
-      </div><br>
+        <%= e.location %><br><br>
+      </div>
       <%= link_to "show event", e %>
       <% if current_user %>
         <% user_ticket = current_user.ticket_for e %>
         <% if time_category != :past && user_ticket && !user_ticket.attending? %>
-          <br><br><div class="invited-or-attending">You're Invited</div><br>
+          <div class="invited-or-attending">You're Invited</div>
           <%= form_with model: Ticket.find(user_ticket[:id]), local: true do |f| %>
             <%= f.hidden_field 'attending', value: true %>
             <%= f.submit 'Attend it!' %>
-          <% end %><br>
+          <% end %>
         <% elsif time_category != :past && user_ticket&.attending? %>
-          <br><br><div class="invited-or-attending">You're Attending</div><br>
+          <div class="invited-or-attending">You're Attending</div>
           <%= form_with model: Ticket.find(user_ticket[:id]), local: true do |f| %>
             <%= f.hidden_field 'attending', value: false %>
             <%= f.submit 'Unattend it!' %>
           <% end %>
-        <% end %><br>
+        <% end %>
       <% end %>
     </div>
   <% end %>

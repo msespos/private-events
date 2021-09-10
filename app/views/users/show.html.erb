@@ -1,8 +1,10 @@
-<% if flash.key? :success %>
-  <h2><em><%= flash[:success] %></em></h2>
-<% elsif flash.key? :error %>
-  <h2><em><%= flash[:error] %></em></h2>
-<% end %><br>
+<div class="flash">
+  <% if flash.key? :success %>
+    <h2><em><%= flash[:success] %></em></h2>
+  <% elsif flash.key? :error %>
+    <h2><em><%= flash[:error] %></em></h2>
+  <% end %>
+</div>
 
 <div class="index-header-logged-in">
   <div class="logo">Private Events!</div>
@@ -16,13 +18,16 @@
   <%= current_user.name %><br>
   <%= current_user.email %>
 </div>
-<h1><%= current_user.name %>'s Events</h1><br>
-<h2>Created Events</h2>
-<% if @user.created_events.empty? %>
-  <h2><em>No events</em></h2>
-<% else %>
-  <div class="event-boxes-container">
-    <div class="event-show-box">
+<h1><%= current_user.name %>'s Events</h1>
+
+<div class="event-boxes-container">
+  <div class="event-show-box">
+    <div class="attended-created-events-header">
+      Created Events
+    </div>
+    <% if @user.created_events.empty? %>
+      <h2><em>No events</em></h2>
+    <% else %>
       <% @user.created_events.each do |e| %>
         <div class="event-in-created-event-box">
           <%= e.date %> --
@@ -44,9 +49,9 @@
           <% end %>
         </div>
       <% end %>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 
 <%= render partial: 'user_events', locals: { event_time: 'Today',
                                              event_date_direction: :asc,

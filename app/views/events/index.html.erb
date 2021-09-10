@@ -1,11 +1,12 @@
-<% if flash.key? :success %>
-  <h2><em><%= flash[:success] %></em></h2>
-<% elsif flash.key? :error %>
-  <h2><em><%= flash[:error] %></em></h2>
-<% end %><br>
+<div class="flash">
+  <% if flash.key? :success %>
+    <h2><em><%= flash[:success] %></em></h2>
+  <% elsif flash.key? :error %>
+    <h2><em><%= flash[:error] %></em></h2>
+  <% end %>
+</div>
 
 <% unless current_user %>
-  <div class="logo-only">Private Events!</div>
   <div class="index-header-not-logged-in">
     <%= button_to "sign up", new_user_registration_path, 
                              method: :get, class:"button" %>
@@ -30,7 +31,7 @@
   </div>
   <div class="username-and-email">
     <%= current_user.name %><br>
-    <%= current_user.email %><br>
+    <%= current_user.email %>
   </div>
 <% end %>
 

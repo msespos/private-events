@@ -1,20 +1,22 @@
-<br><h2>Attended Events (<%= event_time %>):</h2>
-<% if @user.attended_events.where(event_date_query, Date.today)
-                           .where('attending = ?', true).empty? %>
-  <h2><em>No events</em></h2>
-<% else %>
-  <div class="event-boxes-container">
-    <div class="event-show-box">
+<div class="event-boxes-container">
+  <div class="event-show-box">
+    <div class="attended-created-events-header">
+      Attended Events (<%= event_time %>)
+    </div>
+    <% if @user.attended_events.where(event_date_query, Date.today)
+                               .where('attending = ?', true).empty? %>
+      <h2><em>No events</em></h2>
+    <% else %>
       <div class="text-in-user-attended-event-box">
         <% @user.attended_events.order(date: event_date_direction)
-              .where(event_date_query, Date.today)
-              .where('attending = ?', true).each do |e| %>
+                .where(event_date_query, Date.today)
+                .where('attending = ?', true).each do |e| %>
           <%= e.date %> --
           <%= e.time.to_s(:time) %> --
           <em><%= e.name %></em> --
           <%= e.description %><br><br>
         <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
