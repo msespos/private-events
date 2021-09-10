@@ -54,7 +54,7 @@
 
 h1 {
   font-size: 67px;
-  margin: 90px 0px 20px;
+  margin: 90px 0px 15px;
 }
 
 .header-buttons {
@@ -108,7 +108,7 @@ body {
   border-radius: 100px;
   box-shadow: 5px 5px #3f6f41;
   padding: 30px;
-  margin: 20px;
+  margin: 20px 20px 35px 20px;
 }
 
 .event-show-box {
@@ -131,6 +131,7 @@ body {
   font-size: 32px;
   font-style: italic;
   color: rgb(18, 77, 18);
+  margin: 25px 0px 20px;
 }
 
 .event-form {
@@ -188,7 +189,23 @@ body {
   font-size: 18px;
 }
 
-.attendees-in-event-box {
+.attendees-with-header-in-event-box {
   font-weight: bold;
   font-size: 20px;
+  margin: 20px;
+}
+
+.just-attendees-in-event-box {
+  margin: 10px
+}
+
+.attended-created-events-header {
+  font-weight: bold;
+  font-size: 30px;
+  margin: 20px 0px 30px;
+  color: rgb(18, 77, 18)
+}
+
+.flash {
+  margin: 10px;
 }
