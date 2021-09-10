@@ -10,33 +10,35 @@
 <div class="event-boxes-container">
   <div class="event-box">
     <div class="creator-and-name-in-event-box">
-      <br>Creator: <%= @event.creator.name %><br><br>
+      Hosted by <%= @event.creator.name %><br><br>
     </div><br>
     <div class="description-in-event-box">
-      Description: <%= @event.description %><br><br>
+      <%= @event.description %><br><br>
     </div><br>
     <div class="date-time-and-location-in-event-box">
-      Date: <%= @event.date %><br>
-      Time: <%= @event.time %><br>
-      Location: <%= @event.location %><br>
+      <%= @event.date %><br>
+      <%= @event.time %><br>
+      <%= @event.location %><br>
     </div><br><br>
     <div class="attendees-in-event-box">
-      <em>Attendees:</em><br>
       <% if @event.tickets.where("attending = ?", true).empty? %>
-        <h4><em>No attendees</em></h4><br>
+        <h4><em>None attending</em></h4><br>
+      <% else %>
+        <em>Attending:</em><br>
+        <% @event.tickets.each do |t| %>
+          <% if t.attending == true %>
+            <%= User.find(t.attendee_id).name %><br>
+          <% end %>
+        <% end %><br>
       <% end %>
-      <% @event.tickets.each do |t| %>
-        <% if t.attending == true %>
-          <%= User.find(t.attendee_id).name %><br>
-        <% end %>
-      <% end %><br>
-      <em>Invited:</em><br>
       <% if @event.tickets.where("attending = ?", false).empty? %>
-        <h4><em>No invitees</em></h4>
-      <% end %>
-      <% @event.tickets.each do |t| %>
-        <% if t.attending == false %>
-          <%= User.find(t.attendee_id).name %><br>
+        <h4><em>None invited but not attending</em></h4>
+      <% else %>
+      <em>Invited but not attending yet:</em><br>
+        <% @event.tickets.each do |t| %>
+          <% if t.attending == false %>
+            <%= User.find(t.attendee_id).name %><br>
+          <% end %>
         <% end %>
       <% end %>
     </div>
